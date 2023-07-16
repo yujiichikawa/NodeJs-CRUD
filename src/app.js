@@ -63,6 +63,16 @@ server.put("/update-user",buscarUsuario,(request,response)=>{
   return response.status(200).json("E-mail Atualizado").send()
 })
 
+server.delete('/delete-user',buscarUsuario,(request,response)=>{
+  const {user} = request
+  users.forEach((us,index)=>{
+    if(user === us) {
+      users.splice(index,1)
+      return response.status(200).json("Usuário excluido").send()
+    }
+  })
+})
+
 server.listen(3333,()=>{
   console.log('### Servidor ativo ###')
 })

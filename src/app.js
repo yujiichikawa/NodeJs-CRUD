@@ -36,7 +36,12 @@ server.post('/create-user',verificarUsuarioExistente,(request,response)=>{
   return response.status(201).json("Usuario cadastrado").send()
 })
 
+server.get('/list-users',(request,response)=>{
+  if(users.length === 0) return response.status(200).json("Nenhum usuário cadastrado").send()
+
+  return response.status(200).json(users).send()
+})
 
 server.listen(3333,()=>{
-  console.log('### Servidor ativo')
+  console.log('### Servidor ativo ###')
 })
